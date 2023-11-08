@@ -1,19 +1,51 @@
+import { ExpenseType, REQUEST_STARTED,
+  REQUEST_SUCCESSFUL, REQUEST_FAILED } from '../actions';
 import { WalletType } from '../../services/types';
-import { ExpenseType } from '../actions';
 
 const INITIAL_STATE: WalletType = {
-  expenses: 0,
+  isFetching: false,
+  errorMessage: '',
+  currencies: [],
+  expenses: [],
+  editor: false,
+  idToEdit: 0,
 };
 
-const walletReducer = (state = INITIAL_STATE, action: ExpenseType) => {
+function walletReducer(state = INITIAL_STATE, action: ExpenseType) {
   switch (action.type) {
     case 'TOTAL_EXPENSES':
       return {
         ...state,
         expenses: action.payload,
       };
-    default: return state;
+
+    case REQUEST_STARTED:
+      return {
+        ...state,
+        isFetching: true,
+        errorMessage: '',
+        currencies: '',
+      };
+
+    case REQUEST_SUCCESSFUL:
+      return {
+        ...state,
+        isFetching: false,
+        currencies: action.payload,
+        errorMessage: '',
+      };
+
+    case REQUEST_FAILED:
+      return {
+        ...state,
+        isFetching: false,
+        errorMessage: action.payload,
+        currencies: '',
+      };
+
+    default:
+      return state;
   }
-};
+}
 
 export default walletReducer;
