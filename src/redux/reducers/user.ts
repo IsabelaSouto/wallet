@@ -1,12 +1,11 @@
-import { UserType } from '../../services/types';
-import { EmailType } from '../actions/index';
+import { UserType, ActionUserType } from '../../services/types';
 
 const INITIAL_STATE: UserType = {
   email: '',
   password: '',
 };
 
-const userReducer = (state = INITIAL_STATE, action: EmailType) => {
+const userReducer = (state = INITIAL_STATE, action: ActionUserType) => {
   switch (action.type) {
     case 'EMAIL':
       return {
