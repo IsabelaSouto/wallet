@@ -5,7 +5,7 @@ import { fetchApi } from '../services/quotesApi';
 import { actionCurrencies, actionExpenses } from '../redux/actions';
 
 const INITIAL_STATE = {
-  id: 0,
+  id: '0',
   value: '',
   description: '',
   currency: 'USD',

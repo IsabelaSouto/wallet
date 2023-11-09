@@ -4,7 +4,8 @@ import { Dispatch } from '../../services/types';
 export const REQUEST_STARTED = 'REQUEST_STARTED';
 export const REQUEST_SUCCESSFUL = 'REQUEST_SUCCESSFUL';
 export const REQUEST_FAILED = 'REQUEST_FAILED';
-export const NEW_EXPENSE = 'NEW_EXPENSE';
+export const ADD_EXPENSE = 'ADD_EXPENSE';
+export const REMOVE_EXPENSE = 'REMOVE_EXPENSE';
 
 export const actionUser = (email: string) => {
   return {
@@ -23,9 +24,17 @@ export function actionCurrencies(actionFetchApi: object) {
     payload: Object.keys(actionFetchApi),
   };
 }
+
 export const actionExpenses = (expenses: object) => {
   return {
-    type: NEW_EXPENSE,
+    type: ADD_EXPENSE,
+    payload: expenses,
+  };
+};
+
+export const actionRemoveExpenses = (expenses: object) => {
+  return {
+    type: REMOVE_EXPENSE,
     payload: expenses,
   };
 };

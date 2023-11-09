@@ -1,8 +1,16 @@
-import { useSelector } from 'react-redux';
-import { GlobalSatetType } from '../services/types';
+import { useSelector, useDispatch } from 'react-redux';
+import { GlobalSatetType, Dispatch } from '../services/types';
+import { actionRemoveExpenses } from '../redux/actions';
 
 function Table() {
   const { expenses } = useSelector((state: GlobalSatetType) => state.wallet);
+  const dispatch: Dispatch = useDispatch();
+
+  const handleClick = (id: string) => {
+    const removeExpense = expenses
+      .filter((expense) => expense.id !== id);
+    dispatch(actionRemoveExpenses(removeExpense));
+  };
 
   const expensesTable = expenses.map((expense) => {
     const convertedValues = (Number(expense.value)
@@ -18,8 +26,15 @@ function Table() {
         <td>{ Number(expense.exchangeRates[expense.currency].ask).toFixed(2) }</td>
         <td>{ convertedValues }</td>
         <td>Real</td>
-        <button>Editar</button>
-        <button>Excluir</button>
+        <td>
+          <button>Editar</button>
+          <button
+            data-testid="delete-btn"
+            onClick={ () => handleClick(expense.id) }
+          >
+            Excluir
+          </button>
+        </td>
       </tr>
     );
   });
