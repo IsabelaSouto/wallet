@@ -1,21 +1,16 @@
-#Wallet
-##O que foi desenvolvido
+# Wallet
+## O que foi desenvolvido
 Uma carteira de controle de gastos com conversor de moedas. Ao utilizar essa aplicação, a pessoa usuária é capaz de:
   - Adicionar e remover um gasto.
   - Visualizar sua tabela de gastos.
   - Visualizar o total de gastos convertidos para uma moeda de sua escolha.
-
-
-##Desenvolvimento
+## Desenvolvimento
 Foi desenvolvido uma aplicação em Typescript, React e gerenciamento de estado com Redux.
-
-##Tecnologias utilizadas
+## Tecnologias utilizadas
 Node.JS, Typescript, React e Redux
-
-##Instalando depedências
+## Instalando depedências
 cd wallet npm install
-
-##Executando a aplicação
+## Executando a aplicação
 cd wallet npm run dev
 
 <!-- Olá, Tryber!
